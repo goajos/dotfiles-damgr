@@ -1,0 +1,7 @@
+module {
+  git {
+    post_hooks {
+      post_git_install_hook.sh root=#false
+    }
+  }
+}

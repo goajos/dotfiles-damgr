@@ -1,0 +1,17 @@
+host {
+  arch {
+    modules {
+      base
+      c
+      git
+      fontconfig
+      mango
+      foot
+      nvim
+      //damgr
+    }
+    services {
+      NetworkManager
+    }
+  }
+}

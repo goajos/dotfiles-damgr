@@ -1,0 +1,32 @@
+module {
+  mango {
+    dotfiles link=#true
+    packages {
+      // dependencies
+      hwdata
+      libdrm
+      libdisplay-info
+      libinput
+      libliftoff
+      libxcb
+      libxkbcommon
+      pcre2
+      pixman
+      seatd
+      wayland
+      wayland-protocols
+      xcb-util-wm
+      xorg-xwayland
+      
+      // applications
+      foot
+      rofi
+    }
+    pre_hooks {
+      install_mangowc_dependencies.sh root=#true
+    }
+    post_hooks {
+      install_mangowc.sh root=#true
+    }
+  }
+}

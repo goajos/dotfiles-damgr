@@ -1,0 +1,14 @@
+module {
+  nvim {
+    dotfiles link=#true
+    packages {
+      lldb
+      lua-language-server
+      ripgrep
+      tree-sitter-cli
+    }
+    pre_hooks {
+      install_nvim.sh root=#true
+    }
+  }
+}

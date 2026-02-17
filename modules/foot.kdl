@@ -1,0 +1,5 @@
+module {
+  foot {
+    dotfiles link=#true
+  }
+}

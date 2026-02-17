@@ -1,0 +1,28 @@
+module {
+  base {
+    packages {
+      base
+      base-devel
+      btrfs-progs
+      git
+      intel-gpu-tools
+      intel-ucode
+      less
+      linux
+      linux-firmware
+      man-db
+      man-pages
+      networkmanager
+      nvidia-open
+      nvidia-utils
+      openssh
+      sudo
+      vim
+    }
+    post_hooks {
+      keymaps.sh root=#true
+      locale.sh root=#true
+      vimrc.sh root=#true
+    }
+  }
+}

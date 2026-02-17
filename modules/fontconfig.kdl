@@ -1,0 +1,8 @@
+module {
+  fontconfig {
+    dotfiles link=#true
+    post_hooks {
+      post_fontconfig_install_hook.sh root=#true
+    }    
+  }
+}

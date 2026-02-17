@@ -1,0 +1,12 @@
+module {
+  c {
+    packages {
+      clang
+      cmake
+      glibc
+      gcc
+      meson
+      ninja
+    }
+  }
+}
