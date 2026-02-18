@@ -1,10 +1,4 @@
-local g = vim.g
 local o = vim.o
-
-g.mapleader       = " "
-g.maplocalleader  = " "
-g.netrw_liststyle = 3
-g.have_nerd_font  = true
 
 o.termguicolors = true
 o.cmdheight     = 1
@@ -51,8 +45,6 @@ o.grepprg = "rg --vimpgrep"
 o.path:append("**") -- include subdirectories in search
 
 vim.wo.foldmethod = "expr"
-vim.wo.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 o.fillchars   = [[fold: ,foldopen:▼,foldclose:▶,foldsep: ,foldinner: ]]
 o.foldcolumn  = "auto"
 o.foldenable  = false
