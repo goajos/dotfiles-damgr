@@ -2,16 +2,16 @@ vim.pack.add({
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 })
-local d = require("dap")
-require("nvim_dap_virtual_text").setup()
+require("nvim-dap-virtual-text").setup({})
 
+local d = require("dap")
 d.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-dap",
 	name = "lldb",
 }
 d.configurations.c = {
-	c = {
+	{
 		name = "launch",
 		type = "lldb",
 		request = "launch",
@@ -25,7 +25,10 @@ d.configurations.c = {
 			-- "update",
 		},
 	},
-	python = {
+}
+
+d.configurations.python = {
+	{
 		name = "launch",
 		type = "python",
 		request = "launch",
@@ -42,4 +45,4 @@ d.configurations.c = {
 }
 
 vim.api.nvim_set_hl(0, "DapBreakpointColor", { fg = "#ff0000" })
-vim.fn.sign_define("DapBreakpoint", { text = "o", texthl = "DapBreakpointColor", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpointColor", numhl = "" })
