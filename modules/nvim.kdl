@@ -2,9 +2,11 @@ module {
   nvim {
     dotfiles link=#true
     packages {
+      python-debugpy
       lldb
       lua-language-server
       ripgrep
+      stylua
       tree-sitter-cli
     }
     pre_hooks {

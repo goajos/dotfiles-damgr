@@ -39,10 +39,10 @@ o.autoread = true -- auto reload files changed from outside
 o.ignorecase = true
 o.smartcase  = true
 o.inccommand = "split" -- live substitution with (%)s
-o.iskeyword:append("-") -- dash part of words
+vim.opt.iskeyword:append("-") -- dash part of words
 
 o.grepprg = "rg --vimpgrep"
-o.path:append("**") -- include subdirectories in search
+vim.opt.path:append("**") -- include subdirectories in search
 
 vim.wo.foldmethod = "expr"
 o.fillchars   = [[fold: ,foldopen:▼,foldclose:▶,foldsep: ,foldinner: ]]

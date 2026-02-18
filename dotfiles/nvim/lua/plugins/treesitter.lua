@@ -18,10 +18,10 @@ require("nvim-treesitter").install({
   "gitcommit", "gitignore",
   "html",
   "ini",
-  "javascript", "json", "jsonc",
+  "javascript", "json",
   "kdl",
   "lua", "luadoc",
-  "make", "markdown", "markdown-inline",
+  "make", "markdown", "markdown_inline",
   "python",
   "query",
   "sql",
@@ -38,16 +38,16 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "*" },
-	callback = function()
-		local filetype = vim.bo.filetype
-		if filetype and filetype ~= "" then
-			local success = pcall(function()
-				vim.treesitter.start()
-			end)
-			if not success then
-				return
-			end
-		end
-	end,
+  pattern = { "*" },
+  callback = function()
+    local filetype = vim.bo.filetype
+    if filetype and filetype ~= "" then
+      local success = pcall(function()
+        vim.treesitter.start()
+      end)
+      if not success then
+        return
+      end
+    end
+  end,
 })

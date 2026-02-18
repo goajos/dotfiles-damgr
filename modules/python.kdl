@@ -1,0 +1,10 @@
+module {
+  python {
+    packages {
+      python
+      ruff
+      uv
+      ty
+    }
+  }
+}
