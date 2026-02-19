@@ -12,5 +12,5 @@ Host github.com
   IdentityFile /home/jappe/.ssh/github-ssh-key 
 EOF
 
-su - jappe -c 'git config --global merge.tool nvimdiff'
-su - jappe -c 'git config --global diff.tool nvimdiff'
+git config --global merge.tool nvimdiff
+git config --global diff.tool nvimdiff

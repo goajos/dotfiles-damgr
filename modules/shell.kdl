@@ -1,0 +1,11 @@
+module {
+  shell {
+    packages {
+      bash-completion
+      fastfetch
+    }
+    post_hooks {
+      post_shell_install_hook.sh root=#false
+    }
+  }
+}

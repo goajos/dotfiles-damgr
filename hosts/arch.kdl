@@ -9,6 +9,8 @@ host {
       foot
       nvim
       python
+      misc
+      shell
       //damgr
     }
     services {

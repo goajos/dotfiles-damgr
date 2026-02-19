@@ -50,7 +50,7 @@ o.foldcolumn = "auto"
 o.foldenable = false
 
 o.wildmenu = true
-o.wildmode = "longest:full,full"
+o.wildmode = "noselect:lastused,full"
 
 o.splitright = true
 o.splitbelow = true

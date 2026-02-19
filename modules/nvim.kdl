@@ -2,6 +2,7 @@ module {
   nvim {
     dotfiles link=#true
     packages {
+      nodejs
       python-debugpy
       lldb
       lua-language-server

@@ -18,7 +18,7 @@ d.configurations.c = {
 		program = function()
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 		end,
-		cmd = "${workspaceFolder}",
+		cwd = "${workspaceFolder}",
 		args = {
 			-- "init",
 			"merge",
@@ -27,6 +27,21 @@ d.configurations.c = {
 	},
 }
 
+d.adapters.python = {
+	type = "executable",
+	command = function()
+		local cwd = vim.fn.getcwd()
+		if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+			return cwd .. "/.venv/bin/python"
+		else
+			return "/usr/bin/python"
+		end
+	end,
+	args = { "-m", "debugpy.adapter" },
+	options = {
+		source_filetype = "pyhon",
+	},
+}
 d.configurations.python = {
 	{
 		name = "launch",
@@ -35,8 +50,8 @@ d.configurations.python = {
 		program = "${file}",
 		pythonPath = function()
 			local cwd = vim.fn.getcwd()
-			if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-				return cwd .. "/venv/bin/python"
+			if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+				return cwd .. "/.venv/bin/python"
 			else
 				return "/usr/bin/python"
 			end

@@ -1,3 +1,5 @@
+require("plugins.autocomplete")
+require("plugins.copilot-chat")
 require("plugins.dap")
 require("plugins.conform")
 require("plugins.treesitter")
