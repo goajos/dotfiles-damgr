@@ -1,0 +1,13 @@
+host {
+  wsl {
+    modules {
+      wsl
+      c
+      git
+      fontconfig
+      nvim
+      python
+      shell
+    }
+  }
+}

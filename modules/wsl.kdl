@@ -1,0 +1,17 @@
+module {
+    wsl {
+        base-devel
+        git
+        less
+        man-db
+        man-pages
+        openssh
+        sudo
+        vim
+    }
+    post-hooks {
+        keymaps.sh root=#true
+        locale.sh root=#true
+        vimrc.sh root=#true
+    }
+}
