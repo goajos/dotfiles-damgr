@@ -2,7 +2,8 @@ local o = vim.o
 
 o.termguicolors = true
 o.cmdheight = 1
-o.updatetime = 300 -- decrease update time
+o.updatetime = 250 -- decrease update time
+o.timeoutlen = 250 -- decrease the wait time for mapped sequences
 
 -- blinking cursor in insert mode
 vim.opt.guicursor = "n-v-c-sm:block"

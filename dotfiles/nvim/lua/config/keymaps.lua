@@ -1,9 +1,5 @@
 local m = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
--- cycle tabs
-m("n", "<tab>", ":bnext<cr>", { desc = "Next buffer" })
-m("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer" })
+local _opts = { noremap = true, silent = true }
 
 m("n", "<leader>#", "<cmd>e #<cr>", { desc = "Goto last edited" })
 
@@ -43,7 +39,7 @@ local toggle_copilot_chat = function()
     chat_is_open = true
   end
 end
-m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle the copilot chat" })
+m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
 
 -- dap debug
 local sidebar_is_open = false
@@ -79,3 +75,35 @@ m("n", "<f9>", ":DapToggleBreakpoint<cr>", { desc = "Toggle breakpoint on curren
 m("n", "<f10>", ":DapStepOver<cr>", { desc = "Step over" })
 m("n", "<f11>", ":DapStepInto<cr>", { desc = "Step into" })
 m("n", "<f23>", ":DapStepOut<cr>", { desc = "Step out" })
+
+-- cycle buffers of active tabline
+local next_buffer = function()
+  local active_tab = vim.fn.tabpagenr()
+  local buffers = _G.tabline_buffers[active_tab]
+
+  if not buffers or #buffers == 0 then return end
+
+  local active_buf = vim.api.nvim_get_current_buf()
+  -- lua tables are 1 based, fn.index is 0 based and and can return -1
+  local idx = (vim.tbl_contains(buffers, active_buf) and vim.fn.index(buffers, active_buf) or 0) + 1
+  local next_idx = (idx == #buffers) and 1 or (idx + 1)
+
+  vim.api.nvim_set_current_buf(buffers[next_idx])
+end
+-- m("n", "<tab>", ":bnext<cr>", { desc = "Next buffer" })
+m("n", "<tab>", next_buffer, { desc = "Next buffer" })
+local prev_buffer = function()
+  local active_tab = vim.fn.tabpagenr()
+  local buffers = _G.tabline_buffers[active_tab]
+
+  if not buffers or #buffers == 0 then return end
+
+  local active_buf = vim.api.nvim_get_current_buf()
+  -- lua tables are 1 based, fn.index is 0 based and and can return -1
+  local idx = (vim.tbl_contains(buffers, active_buf) and vim.fn.index(buffers, active_buf) or 0) + 1
+  local prev_idx = (idx == 1) and #buffers or (idx - 1)
+
+  vim.api.nvim_set_current_buf(buffers[prev_idx])
+end
+-- m("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer" })
+m("n", "<s-tab>", prev_buffer, { desc = "Previous buffer" })

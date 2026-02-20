@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd({ "CmdlineChanged", "CmdlineLeave" }, {
   pattern = { "*" },
   group = vim.api.nvim_create_augroup("CmdlineAutocompletion", { clear = true }),
   callback = debounce(
-    vim.schedule_wrap(function(e)
+    vim.schedule_wrap(function(cargs)
       local function should_enable_autocomplete()
         local cmdline_cmd = vim.fn.split(vim.fn.getcmdline(), " ")[1]
         local cmdline_type = vim.fn.getcmdtype()
@@ -51,12 +51,12 @@ vim.api.nvim_create_autocmd({ "CmdlineChanged", "CmdlineLeave" }, {
             )
       end
 
-      if e.event == "CmdlineChanged" and should_enable_autocomplete() then
+      if cargs.event == "CmdlineChanged" and should_enable_autocomplete() then
         vim.opt.wildmode = "noselect:lastused,full"
         vim.fn.wildtrigger()
       end
 
-      if e.event == "CmdlineLeave" then
+      if cargs.event == "CmdlineLeave" then
         vim.opt.wildmode = "longest:full,full"
       end
     end),
