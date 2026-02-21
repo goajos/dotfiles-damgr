@@ -5,10 +5,13 @@ module {
       nodejs
       lldb
       ripgrep
-      tree-sitter-cli
+      // tree-sitter-cli
     }
     pre_hooks {
       install_nvim.sh root=#true
+    }
+    post_hooks {
+      post_nvim_install_hook.sh root=#true
     }
   }
 }

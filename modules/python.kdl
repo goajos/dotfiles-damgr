@@ -1,6 +1,7 @@
 module {
   python {
     packages {
+      python-black
       python-debugpy
       python
       ruff

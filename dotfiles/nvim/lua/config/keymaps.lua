@@ -45,9 +45,9 @@ end
 m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
 
 -- dap debug
-m("n", "<leader>d", function()
-	require("osv").launch({ port = 8080 })
-end, { desc = "Toggle the dap sidebar" })
+-- m("n", "<leader>d", function()
+-- 	require("osv").launch({ port = 8080 })
+-- end, { desc = "Launch osv debugger" })
 local sidebar_is_open = false
 local cur_sidebar
 local toggle_dap_sidebar = function()

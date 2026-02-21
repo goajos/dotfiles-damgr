@@ -27,6 +27,7 @@ d.configurations.c = {
 	},
 }
 
+-- TODO: python dap is not setup properly
 d.adapters.python = {
 	type = "executable",
 	command = function()
