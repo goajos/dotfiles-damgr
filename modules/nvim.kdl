@@ -3,11 +3,8 @@ module {
     dotfiles link=#true
     packages {
       nodejs
-      python-debugpy
       lldb
-      lua-language-server
       ripgrep
-      stylua
       tree-sitter-cli
     }
     pre_hooks {

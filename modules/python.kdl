@@ -1,6 +1,7 @@
 module {
   python {
     packages {
+      python-debugpy
       python
       ruff
       uv

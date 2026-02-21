@@ -18,6 +18,7 @@ module {
       openssh
       sudo
       vim
+      wget
     }
     post_hooks {
       keymaps.sh root=#true

@@ -73,8 +73,8 @@ function git_status_color()
 }
 
 TRIANGLE=$'\uE0B0'
-RGB_USER=$(hex_to_rgb "#f62b5a")
-RGB_HOST=$(hex_to_rgb "#47b413")
+RGB_USER=$(hex_to_rgb "#f62b5a") # a red color
+RGB_HOST=$(hex_to_rgb "#47b413") # a green color
 RGB_WDBG=$(hex_to_rgb "#e6e6e6")
 RGB_WDFG=$(hex_to_rgb "#242424")
 
