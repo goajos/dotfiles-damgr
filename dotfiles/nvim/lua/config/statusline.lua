@@ -1,4 +1,4 @@
--- TODO: set up sync with git-prompt.sh?
+-- TODO: set up sync with git-prompt.sh/go version?
 local M = {}
 
 local function get_icon()
@@ -70,5 +70,6 @@ function M.build()
 	return st
 end
 
+vim.o.laststatus = 3 -- global statusline
 vim.o.statusline = '%!v:lua.require("config.statusline").build()'
 return M

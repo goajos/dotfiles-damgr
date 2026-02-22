@@ -11,8 +11,9 @@ vim.opt.guicursor:append("r-cr-o:hor20")
 vim.opt.guicursor:append("i-ci-ve-t:block-blinkwait0-blinkon500-blinkoff500-TermCursor")
 
 o.pumheight = 10 -- popupmenu height
-o.pumblend = 10  -- popupmenu transparency
-o.winblend = 0   -- floating window transparency
+o.pumblend = 5 -- popupmenu transparency
+o.winblend = 5 -- floating window transparency
+o.winborder = "rounded" -- floating window border
 -- popupmenu (also with 1 item) and no preselection
 o.completeopt = "menu,menuone,noselect"
 
@@ -23,7 +24,7 @@ o.cursorline = true
 o.signcolumn = "number"
 o.list = true
 
-o.mouse = "a"                    --enable mouse for resizing
+o.mouse = "a" --enable mouse for resizing
 o.backspace = "indent,eol,start" -- better backspace behavior
 
 o.shiftwidth = 2
@@ -39,7 +40,7 @@ o.autoread = true -- auto reload files changed from outside
 
 o.ignorecase = true
 o.smartcase = true
-o.inccommand = "split"        -- live substitution with (%)s
+o.inccommand = "split" -- live substitution with (%)s
 vim.opt.iskeyword:append("-") -- dash part of words
 
 o.grepprg = "rg --vimgrep"

@@ -11,7 +11,7 @@ host {
       python
       misc
       shell
-      //damgr
+      damgr
     }
     services {
       NetworkManager
