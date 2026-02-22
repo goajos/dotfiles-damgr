@@ -11,9 +11,12 @@ vim.opt.guicursor:append("r-cr-o:hor20")
 vim.opt.guicursor:append("i-ci-ve-t:block-blinkwait0-blinkon500-blinkoff500-TermCursor")
 
 o.pumheight = 10 -- popupmenu height
-o.pumblend = 5 -- popupmenu transparency
-o.winblend = 5 -- floating window transparency
+o.pumblend = 0 -- popupmenu transparency
+o.pumborder = "rounded" -- popupmenu border
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "NvimDarkGrey2" }) -- sync background colors
+o.winblend = 0 -- floating window transparency
 o.winborder = "rounded" -- floating window border
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NvimDarkGrey2" }) -- sync background colors
 -- popupmenu (also with 1 item) and no preselection
 o.completeopt = "menu,menuone,noselect"
 
