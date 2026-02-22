@@ -29,8 +29,20 @@ m("v", ">", ">gv")
 m("t", "<esc>", "<c-\\><c-n>", { desc = "Leave terminal buffer insert mode" })
 m("t", "<c-v><esc>", "<esc>", { desc = "Send <Esc> to terminal buffer" })
 
+m("n", "<leader>w", ":write<cr>", { desc = "Write current buffer to file" })
+
 m("n", "<leader>f", ":find ", { desc = "Toggle find" })
 m("n", "<leader>g", ":grep ", { desc = "Toggle grep" })
+
+local toggle_netrw = function()
+	local active_buf = vim.api.nvim_get_current_buf()
+	if vim.bo[active_buf].filetype == "netrw" then
+		vim.api.nvim_buf_delete(active_buf, {})
+		return
+	end
+	vim.cmd("Explore")
+end
+m("n", "<leader>e", toggle_netrw, { desc = "Toggle find" })
 
 local chat_is_open = false
 local toggle_copilot_chat = function()
