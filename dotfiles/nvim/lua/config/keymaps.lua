@@ -15,16 +15,22 @@ m("n", "<c-l>", "<c-w>l", { remap = true })
 -- <c-w>p = previous window
 
 m("n", "gl", "$", { desc = "Goto end of line" })
-m("n", "gh", "$", { desc = "Goto start of line" })
+m("n", "gh", "^", { desc = "Goto start of line" })
 
 m("n", "<leader>/", "<cmd>nohlsearch<cr>")
+m("n", "n", "nzzzv", { desc = "Next search centered" })
+m("n", "N", "Nzzzv", { desc = "Previous search centered" })
+
+m("n", "<c-d>", "<c-d>zz", { desc = "Page down centered" })
+m("n", "<c-u>", "<c-u>zz", { desc = "Page up centered" })
 
 m({ "n", "x" }, "gy", '"+y', { desc = "Yank to system clipboard" })
 m({ "n", "x" }, "gp", '"+p', { desc = "Paste from system clipboard" })
+m({ "x" }, "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
 -- indent and stay in visual mode
-m("v", "<", "<gv")
-m("v", ">", ">gv")
+m("x", "<", "<gv")
+m("x", ">", ">gv")
 
 m("t", "<esc>", "<c-\\><c-n>", { desc = "Leave terminal buffer insert mode" })
 m("t", "<c-v><esc>", "<esc>", { desc = "Send <Esc> to terminal buffer" })
@@ -35,24 +41,24 @@ m("n", "<leader>f", ":find ", { desc = "Toggle find" })
 m("n", "<leader>g", ":grep ", { desc = "Toggle grep" })
 
 local toggle_netrw = function()
-	local active_buf = vim.api.nvim_get_current_buf()
-	if vim.bo[active_buf].filetype == "netrw" then
-		vim.api.nvim_buf_delete(active_buf, {})
-		return
-	end
-	vim.cmd("Explore")
+  local active_buf = vim.api.nvim_get_current_buf()
+  if vim.bo[active_buf].filetype == "netrw" then
+    vim.api.nvim_buf_delete(active_buf, {})
+    return
+  end
+  vim.cmd("Explore")
 end
 m("n", "<leader>e", toggle_netrw, { desc = "Toggle find" })
 
 local chat_is_open = false
 local toggle_copilot_chat = function()
-	if chat_is_open then
-		vim.cmd("CopilotChatClose")
-		chat_is_open = false
-	else
-		vim.cmd("CopilotChat")
-		chat_is_open = true
-	end
+  if chat_is_open then
+    vim.cmd("CopilotChatClose")
+    chat_is_open = false
+  else
+    vim.cmd("CopilotChat")
+    chat_is_open = true
+  end
 end
 m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
 
@@ -63,28 +69,28 @@ m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
 local sidebar_is_open = false
 local cur_sidebar
 local toggle_dap_sidebar = function()
-	if sidebar_is_open then
-		cur_sidebar.close()
-		sidebar_is_open = false
-	else
-		local widgets = require("dap.ui.widgets")
-		cur_sidebar = widgets.sidebar(widgets.scopes)
-		cur_sidebar.open()
-		sidebar_is_open = true
-	end
+  if sidebar_is_open then
+    cur_sidebar.close()
+    sidebar_is_open = false
+  else
+    local widgets = require("dap.ui.widgets")
+    cur_sidebar = widgets.sidebar(widgets.scopes)
+    cur_sidebar.open()
+    sidebar_is_open = true
+  end
 end
 m("n", "<leader>ds", toggle_dap_sidebar, { desc = "Toggle the dap sidebar" })
 local repl_is_open = false
 local repl
 local toggle_dap_repl = function()
-	if repl_is_open then
-		repl.close()
-		repl_is_open = false
-	else
-		repl = require("dap.repl")
-		repl.open()
-		repl_is_open = true
-	end
+  if repl_is_open then
+    repl.close()
+    repl_is_open = false
+  else
+    repl = require("dap.repl")
+    repl.open()
+    repl_is_open = true
+  end
 end
 m("n", "<leader>dr", toggle_dap_repl, { desc = "Toggle the dap repl" })
 m("n", "<f5>", ":DapContinue<cr>", { desc = "Continue the dap debugger" })
