@@ -1,6 +1,7 @@
 module {
     wsl {
         base-devel
+        fontconfig
         git
         less
         man-db
