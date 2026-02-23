@@ -2,6 +2,7 @@
 local M = {}
 
 function M.set_highlights()
+  vim.api.nvim_set_hl(0, "StatusLine", { bg = "NvimDarkGrey3" })
   vim.api.nvim_set_hl(0, "MyGitAdd", { fg = "#00ff00" })
   vim.api.nvim_set_hl(0, "MyGitDel", { fg = "#ff0000" })
 end
@@ -81,8 +82,8 @@ local function get_git_diff()
     end
   end
   if cached_diff ~= "" then
-    return cached_diff:gsub("(%d+)%+", "%1%%#MyGitAdd#+%%#NvimDarkGrey1#"):gsub("(%d+)%-",
-      "%1%%#MyGitDel#-%%#NvimDarkGrey1#")
+    return cached_diff:gsub("(%d+)%+", "%1%%#MyGitAdd#+%%#NvimDarkGrey3#"):gsub("(%d+)%-",
+      "%1%%#MyGitDel#-%%#NvimDarkGrey3#")
   end
   return ""
 end

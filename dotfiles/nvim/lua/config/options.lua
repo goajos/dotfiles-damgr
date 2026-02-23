@@ -1,5 +1,9 @@
 local o = vim.o
 
+o.background = "dark"
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "NvimDarkGrey2" })       -- sync background colors
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NvimDarkGrey2" }) -- sync background colors
+
 o.termguicolors = true
 o.cmdheight = 1
 o.updatetime = 250 -- decrease update time
@@ -10,13 +14,11 @@ vim.opt.guicursor = "n-v-c-sm:block"
 vim.opt.guicursor:append("r-cr-o:hor20")
 vim.opt.guicursor:append("i-ci-ve-t:block-blinkwait0-blinkon500-blinkoff500-TermCursor")
 
-o.pumheight = 10 -- popupmenu height
-o.pumblend = 0 -- popupmenu transparency
+o.pumheight = 10        -- popupmenu height
+o.pumblend = 0          -- popupmenu transparency
 o.pumborder = "rounded" -- popupmenu border
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "NvimDarkGrey2" }) -- sync background colors
-o.winblend = 0 -- floating window transparency
+o.winblend = 0          -- floating window transparency
 o.winborder = "rounded" -- floating window border
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NvimDarkGrey2" }) -- sync background colors
 -- popupmenu (also with 1 item) and no preselection
 o.completeopt = "menu,menuone,noselect"
 
@@ -27,7 +29,7 @@ o.cursorline = true
 o.signcolumn = "number"
 o.list = true
 
-o.mouse = "a" --enable mouse for resizing
+o.mouse = "a"                    --enable mouse for resizing
 o.backspace = "indent,eol,start" -- better backspace behavior
 
 o.shiftwidth = 2
@@ -43,7 +45,7 @@ o.autoread = true -- auto reload files changed from outside
 
 o.ignorecase = true
 o.smartcase = true
-o.inccommand = "split" -- live substitution with (%)s
+o.inccommand = "split"        -- live substitution with (%)s
 vim.opt.iskeyword:append("-") -- dash part of words
 
 o.grepprg = "rg --vimgrep"

@@ -1,8 +1,9 @@
 local M = {}
 
 function M.set_highlights()
-  vim.api.nvim_set_hl(0, "MyBufInactive", {})
-  vim.api.nvim_set_hl(0, "MyBufActive", { bold = true })
+  vim.api.nvim_set_hl(0, "TabLine", { bg = "NvimDarkGrey3" })
+  vim.api.nvim_set_hl(0, "MyBufInactive", { bg = "NvimDarkGrey3" })
+  vim.api.nvim_set_hl(0, "MyBufActive", { bold = true, bg = "NvimDarkGrey3" })
 end
 
 local function get_icon(file_name, buf_name)
