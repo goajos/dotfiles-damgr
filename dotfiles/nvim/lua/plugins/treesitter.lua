@@ -39,6 +39,7 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "*" },
+  group = vim.api.nvim_create_augroup("TreesitterUserGroup", { clear = true }),
   callback = function()
     local filetype = vim.bo.filetype
     if filetype and filetype ~= "" then

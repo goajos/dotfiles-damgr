@@ -10,13 +10,10 @@ local lsp_keymaps = {
   { keys = "gd", func = vim.lsp.buf.definition, desc = "Goto definition",     has = "definitionProvider" },
 }
 
-local function augroup(name)
-  return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
-end
-
 local completion = vim.g.completion_mode or "native"
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = augroup("lsp_attach"),
+  pattern = { "*" },
+  group = vim.api.nvim_create_augroup("LspUserGroup", { clear = true }),
   callback = function(cargs)
     local client = vim.lsp.get_client_by_id(cargs.data.client_id)
     local buf = cargs.buf

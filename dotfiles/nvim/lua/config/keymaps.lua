@@ -14,8 +14,8 @@ m("n", "<c-l>", "<c-w>l", { remap = true })
 -- <c-w>c = close window (not buffer!)
 -- <c-w>p = previous window
 
-m("n", "gl", "$", { desc = "Goto end of line" })
-m("n", "gh", "^", { desc = "Goto start of line" })
+m({ "n", "x" }, "gl", "$", { desc = "Goto end of line" })
+m({ "n", "x" }, "gh", "^", { desc = "Goto start of line" })
 
 m("n", "<leader>/", "<cmd>nohlsearch<cr>")
 m("n", "n", "nzzzv", { desc = "Next search centered" })
