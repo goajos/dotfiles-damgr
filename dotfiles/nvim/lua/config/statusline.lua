@@ -1,4 +1,3 @@
--- TODO: set up sync with git-prompt.sh/go version?
 local M = {}
 
 function M.set_highlights()

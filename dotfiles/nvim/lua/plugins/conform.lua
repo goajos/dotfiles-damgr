@@ -1,4 +1,3 @@
--- TODO: how to handle package updates?
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
 require("conform").setup({
