@@ -1,9 +1,9 @@
 local M = {}
 
 function M.set_highlights()
-	vim.api.nvim_set_hl(0, "TabLine", { bg = "NvimDarkGrey3" })
-	vim.api.nvim_set_hl(0, "MyBufInactive", { bg = "NvimDarkGrey3" })
-	vim.api.nvim_set_hl(0, "MyBufActive", { bold = true, bg = "NvimDarkGrey3" })
+	vim.api.nvim_set_hl(0, "MyBufInactive", { bg = "NvimDarkGrey3", fg = "Foreground" })
+	vim.api.nvim_set_hl(0, "MyBufActive", { bold = true, bg = "NvimDarkGrey2", fg = "Foreground" })
+	vim.api.nvim_set_hl(0, "MyBufSeparator", { fg = "NvimDarkGrey3", bg = "NvimDarkGrey3" })
 end
 
 local function get_icon(file_name, buf_name)
@@ -40,7 +40,7 @@ function _G.tabline()
 					table.concat({
 						"%#MyBufActive# ",
 						buf_content,
-						"",
+						" %#MyBufSeparator#",
 					})
 				)
 			else
@@ -49,7 +49,7 @@ function _G.tabline()
 					table.concat({
 						"%#MyBufInactive# ",
 						buf_content,
-						"",
+						" %#MyBufSeparator#",
 					})
 				)
 			end
