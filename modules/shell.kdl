@@ -2,7 +2,9 @@ module {
   shell {
     packages {
       bash-completion
+      bash-language-server
       fastfetch
+      shfmt
     }
     post_hooks {
       post_shell_install_hook.sh root=#false
