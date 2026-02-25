@@ -1,7 +1,7 @@
 host {
-  wsl {
+  wsl_host {
     modules {
-      wsl
+      wsl_module
       c
       git
       fontconfig

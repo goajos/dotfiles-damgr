@@ -9,6 +9,7 @@ module {
         openssh
         sudo
         vim
+        wl-clipboard
     }
     post-hooks {
         keymaps.sh root=#true
