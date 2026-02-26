@@ -3,6 +3,8 @@ module {
     packages {
       base
       base-devel
+      bluez
+      bluez-utils
       btrfs-progs
       git
       intel-gpu-tools
