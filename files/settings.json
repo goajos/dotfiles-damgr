@@ -1,0 +1,333 @@
+// mklink "C:\Users\jcremers\AppData\Roaming\Code\User\settings.json" "\\wsl$\archlinux\home\jappe\.config\arch-config\modules\misc\wsl\settings.json"
+// mklink "C:\Users\jcremers\AppData\Roaming\Code\User\machine-settings.json" "\\wsl$\archlinux\home\jappe\.config\arch-config\modules\misc\wsl\machine-settings.json"
+// mklink "C:\Users\jcremers\AppData\Roaming\Code\User\keybindings.json" "\\wsl$\archlinux\home\jappe\.config\arch-config\modules\misc\keybindings.json"
+{
+    // editor settings
+    "editor.lineNumbers": "relative",
+    "editor.fontFamily": "JetBrains Mono Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.matchBrackets": "never",
+    "editor.autoClosingBrackets": "never",
+    "editor.tabCompletion": "on",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.occurrencesHighlight": "off",
+    "editor.overviewRulerBorder": false,
+    "editor.cursorSurroundingLines": 10,
+    "breadcrumbs.enabled": false,
+    "terminal.integrated.stickyScroll.enabled": false,
+    "terminal.integrated.suggest.enabled": false,
+    // window settings
+    "window.menuBarVisibility": "hidden",
+    "window.titleBarStyle": "native",
+    "window.menuStyle": "custom",
+    "window.customTitleBarVisibility": "never",
+    // workbench settings
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": true,
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.tree.indent": 16,
+    "workbench.view.showQuietly": {
+        "workbench.panel.output": true
+    },
+    // file explorer settings
+    "explorer.compactFolders": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "explorer.decorations.colors": false,
+    "git.decorations.enabled": false,
+    // files settings
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    // copilot settings
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.enable": {
+        "*": false
+    },
+    "editor.aiStats.enabled": false,
+    // ruff settings
+    "ruff.configuration": "C:/Code/pyproject.toml",
+    // vim settings
+    "editor.formatOnSave": true,
+    "editor.cursorBlinking": "blink",
+    "vim.cursorStylePerMode.normal": "block",
+    "editor.renderLineHighlight": "line",
+    // enable esc to close the terminal when focusing it
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.closePanel"
+    ],
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "vim.leader": "<space>",
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.highlightedyank.enable": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // jump to the end of the line
+        {
+            "before": [
+                "g",
+                "l"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        // jump to the start of the line
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        // clear search highlight
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        // select next with screen centering
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z",
+                "z",
+                "v"
+            ],
+        },
+        // select previous with screen centering
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z",
+                "z",
+                "v"
+            ],
+        },
+        // save open buffer
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        // open terminal panel -> escape to close it
+        {
+            "before": [
+                "<leader>",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.terminal.toggleTerminal"
+            ]
+        },
+        // open repl panel -> escape to close it
+        {
+            "before": [
+                "<leader>",
+                "d",
+                "r"
+            ],
+            "commands": [
+                "workbench.debug.action.toggleRepl"
+            ]
+        },
+        // open debug sidebar -> escape to close it
+        {
+            "before": [
+                "<leader>",
+                "d",
+                "s"
+            ],
+            "commands": [
+                "workbench.view.debug"
+            ]
+        },
+        // half page down with screen centering
+        {
+            "before": [
+                "<c-d>"
+            ],
+            "after": [
+                "<c-d>",
+                "z",
+                "z"
+            ]
+        },
+        // half page up with screen centering
+        {
+            "before": [
+                "<c-u>"
+            ],
+            "after": [
+                "<c-u>",
+                "z",
+                "z"
+            ]
+        },
+        // toggle copilot chat -> <leader> c to close it
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.toggleAuxiliaryBar"
+            ]
+        },
+        // open file explorer -> escape to close it
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        // open search sidebar -> escape to close it
+        // after searching:
+        //     - to enable jumping search results with ]q and [q enter visual mode with 'v'
+        //     - escape will also clear the search results and leave visual mode
+        {
+            "before": [
+                "<leader>",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        // open fuzzy file finder popupmenu
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // stay in visual mode when indenting
+        {
+            "before": [
+                "<"
+            ],
+            "after": [
+                "<",
+                "g",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "after": [
+                ">",
+                "g",
+                "v"
+            ]
+        },
+        // global yank
+        {
+            "before": [
+                "g",
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        // global paste
+        {
+            "before": [
+                "g",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "p"
+            ]
+        },
+        // paste over something without yanking the new result
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "P"
+            ]
+        },
+        // enable jumping search results with visual mode on
+        {
+            "before": [
+                "[",
+                "q"
+            ],
+            "commands": [
+                "search.action.focusPreviousSearchResult",
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "q"
+            ],
+            "commands": [
+                "search.action.focusNextSearchResult",
+            ]
+        },
+    ],
+    "vim.handleKeys": {
+        "<c-d>": true,
+        "<c-u>": true,
+        "<c-n>": true,
+        "<c-p>": true,
+        "<c-h>": false, // vscode window navigation (defined in keybindings.json)
+        "<c-j>": false, // vscode window navigation (defined in keybindings.json)
+        "<c-k>": false, // vscode window navigation (defined in keybindings.json)
+        "<c-l>": false, // vscode window navigation (defined in keybindings.json)
+        "<c-a>": false, // vscode select all (standard shortcut)
+        "<c-c>": false, // vscode copy (standard shortcut)
+        "<c-v>": false, // vscode paste (standard shortcut)
+        "<c-z>": false // vscode undo (standard shortcut)
+    },
+    // https://gist.github.com/wojukasz/d76ca3162debc66d4227b9dc6049789e
+    // TODO: lsp keybindings?
+}

@@ -1,0 +1,120 @@
+// Place your key bindings in this file to override the default
+[
+  // tab and shift tab to cycle between open buffers
+  {
+    "key": "tab",
+    "command": "workbench.action.previousEditor",
+    "when": "vim.active && vim.mode != 'Insert'",
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.nextEditor",
+    "when": "vim.active && vim.mode != 'Insert'"
+  },
+  // ctrl+k will focus the buffers when in the panel
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorFocus && (activePanel == terminal || activePanel == workbench.panel.repl || activePanel == workbench.panel.output)"
+  },
+  // ctrl+l will focus the buffers when in the sidebar
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorFocus && (activeViewlet == workbench.view.explorer || activeViewlet == workbench.view.search || activeViewlet == workbench.view.scm || activeViewlet == workbench.view.debug)"
+  },
+  // ctrl+{h,j,k,l} for easy buffer movement
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorFocus && vim.active && vim.mode != 'Insert'"
+  },
+  // when searching pressing enter will focus the buffers again,
+  // enter visual mode for jumping with ]q and [q
+  {
+    "key": "enter",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusActiveEditorGroup",
+      ]
+    },
+    "when": "searchInputBoxFocus"
+  },
+  // when searching and in visual mode pressing escape will clear the seach,
+  // close the search sidebar and go back to normal mode
+  {
+    "key": "escape",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "extension.vim_escape",
+        "search.action.clearSearchResults",
+        "workbench.action.closeSidebar"
+      ]
+    },
+    "when": "hasSearchResult && vim.mode == 'Visual'"
+  },
+  // escape closes the terminal when focusing it
+  {
+    "key": "escape",
+    "command": "workbench.action.closePanel",
+    "when": "terminalFocus"
+  },
+  // escape will close the panel with buffer focus and not in insert mode
+  {
+    "key": "escape",
+    "command": "workbench.action.closePanel",
+    "when": "(activePanel == terminal || activePanel == workbench.panel.repl || activePanel == workbench.panel.output) && vim.active && vim.mode != 'Insert'"
+  },
+  // escape will close the sidebar with buffer focus and not in insert mode
+  {
+    "key": "escape",
+    "command": "workbench.action.closeSidebar",
+    "when": "!hasSearchResult && (activeViewlet == workbench.view.explorer || activeViewlet == workbench.view.search || activeViewlet == workbench.view.scm || activeViewlet == workbench.view.debug) && vim.active && vim.mode != 'Insert'"
+  },
+  // [d will jump to the previous diagnostic
+  {
+    "key": "oem_4 d",
+    "command": "editor.action.marker.prev",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  // ]d will jump to the next diagnostic
+  {
+    "key": "oem_6 d",
+    "command": "editor.action.marker.next",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  // ctrl+x ctrl+o will trigger suggestions when in insert mode
+  {
+    "key": "ctrl+x ctrl+o",
+    "command": "editor.action.triggerSuggest && vim.active && vim.mode == 'Insert'",
+  },
+  // ctrl+n will select the next option in popupmenus
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  // ctrl+p will select the previous option in popupmenus
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+]

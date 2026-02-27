@@ -1,8 +1,6 @@
 local m = vim.keymap.set
 local _opts = { noremap = true, silent = true }
 
-m("n", "<leader>#", "<cmd>e #<cr>", { desc = "Goto last edited" })
-
 m("n", "<tab>", ":bnext<cr>", { desc = "Next buffer" })
 m("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer" })
 
@@ -48,7 +46,7 @@ local toggle_netrw = function()
   end
   vim.cmd("Explore")
 end
-m("n", "<leader>e", toggle_netrw, { desc = "Toggle find" })
+m("n", "<leader>e", toggle_netrw, { desc = "Toggle netrw explorer" })
 
 local chat_is_open = false
 local toggle_copilot_chat = function()
