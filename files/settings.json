@@ -101,6 +101,43 @@
                 ":nohl"
             ]
         },
+        // global yank
+        {
+            "before": [
+                "g",
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        // global paste
+        {
+            "before": [
+                "g",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "p"
+            ]
+        },
+        // paste over something without yanking the new result
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "P"
+            ]
+        },
         // select next with screen centering
         {
             "before": [
@@ -236,6 +273,26 @@
         },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
+        // jump to the end of the line
+        {
+            "before": [
+                "g",
+                "l"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        // jump to the start of the line
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "after": [
+                "^"
+            ]
+        },
         // stay in visual mode when indenting
         {
             "before": [

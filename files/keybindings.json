@@ -3,13 +3,13 @@
   // tab and shift tab to cycle between open buffers
   {
     "key": "tab",
-    "command": "workbench.action.previousEditor",
-    "when": "vim.active && vim.mode != 'Insert'",
+    "command": "workbench.action.nextEditor",
+    "when": "!terminalFocus && vim.active && vim.mode != 'Insert'",
   },
   {
     "key": "shift+tab",
-    "command": "workbench.action.nextEditor",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "command": "workbench.action.previousEditor",
+    "when": "!terminalFocus && vim.active && vim.mode != 'Insert'"
   },
   // ctrl+k will focus the buffers when in the panel
   {
@@ -44,32 +44,6 @@
     "command": "workbench.action.focusRightGroup",
     "when": "editorFocus && vim.active && vim.mode != 'Insert'"
   },
-  // when searching pressing enter will focus the buffers again,
-  // enter visual mode for jumping with ]q and [q
-  {
-    "key": "enter",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "workbench.action.focusActiveEditorGroup",
-      ]
-    },
-    "when": "searchInputBoxFocus"
-  },
-  // when searching and in visual mode pressing escape will clear the seach,
-  // close the search sidebar and go back to normal mode
-  {
-    "key": "escape",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "extension.vim_escape",
-        "search.action.clearSearchResults",
-        "workbench.action.closeSidebar"
-      ]
-    },
-    "when": "hasSearchResult && vim.mode == 'Visual'"
-  },
   // escape closes the terminal when focusing it
   {
     "key": "escape",
@@ -86,7 +60,33 @@
   {
     "key": "escape",
     "command": "workbench.action.closeSidebar",
-    "when": "!hasSearchResult && (activeViewlet == workbench.view.explorer || activeViewlet == workbench.view.search || activeViewlet == workbench.view.scm || activeViewlet == workbench.view.debug) && vim.active && vim.mode != 'Insert'"
+    "when": "!hasSearchResult && !inDebugMode && (activeViewlet == workbench.view.explorer || activeViewlet == workbench.view.search || activeViewlet == workbench.view.scm || activeViewlet == workbench.view.debug) && vim.active && vim.mode != 'Insert'"
+  },
+  // when searching pressing enter will focus the buffers again,
+  // enter visual mode for jumping with ]q and [q
+  {
+    "key": "enter",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusActiveEditorGroup",
+      ]
+    },
+    "when": "searchInputBoxFocus"
+  },
+  // when searching and in visual mode pressing escape will clear the search,
+  // close the search sidebar and go back to normal mode
+  {
+    "key": "escape",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "extension.vim_escape",
+        "search.action.clearSearchResults",
+        "workbench.action.closeSidebar"
+      ]
+    },
+    "when": "hasSearchResult && vim.mode == 'Visual'"
   },
   // [d will jump to the previous diagnostic
   {
