@@ -1,4 +1,4 @@
-require("plugins.copilot-chat")
+-- require("plugins.copilot-chat")
 require("plugins.dap")
 require("plugins.conform")
 require("plugins.osv")
