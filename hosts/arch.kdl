@@ -11,6 +11,7 @@ host {
       python
       misc
       shell
+      copilot-cli
       // damgr
     }
     services {

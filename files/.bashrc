@@ -125,3 +125,4 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 fastfetch
+export PATH="/home/jappe/.local/bin:$PATH"

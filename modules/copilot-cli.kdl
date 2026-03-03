@@ -1,0 +1,7 @@
+module {
+  copilot-cli {
+    pre_hooks {
+      install_copilot_cli.sh root=#false
+    }
+  }
+}

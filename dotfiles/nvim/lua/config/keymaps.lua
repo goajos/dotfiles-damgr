@@ -39,26 +39,26 @@ m("n", "<leader>f", ":find ", { desc = "Toggle find" })
 m("n", "<leader>g", ":grep ", { desc = "Toggle grep" })
 
 local toggle_netrw = function()
-  local active_buf = vim.api.nvim_get_current_buf()
-  if vim.bo[active_buf].filetype == "netrw" then
-    vim.api.nvim_buf_delete(active_buf, {})
-    return
-  end
-  vim.cmd("Explore")
+	local active_buf = vim.api.nvim_get_current_buf()
+	if vim.bo[active_buf].filetype == "netrw" then
+		vim.api.nvim_buf_delete(active_buf, {})
+		return
+	end
+	vim.cmd("Explore")
 end
 m("n", "<leader>e", toggle_netrw, { desc = "Toggle netrw explorer" })
 
-local chat_is_open = false
-local toggle_copilot_chat = function()
-  if chat_is_open then
-    vim.cmd("CopilotChatClose")
-    chat_is_open = false
-  else
-    vim.cmd("CopilotChat")
-    chat_is_open = true
-  end
-end
-m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
+-- local chat_is_open = false
+-- local toggle_copilot_chat = function()
+--   if chat_is_open then
+--     vim.cmd("CopilotChatClose")
+--     chat_is_open = false
+--   else
+--     vim.cmd("CopilotChat")
+--     chat_is_open = true
+--   end
+-- end
+-- m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
 
 -- dap debug
 -- m("n", "<leader>d", function()
@@ -67,28 +67,28 @@ m("n", "<leader>c", toggle_copilot_chat, { desc = "Toggle copilot chat" })
 local sidebar_is_open = false
 local cur_sidebar
 local toggle_dap_sidebar = function()
-  if sidebar_is_open then
-    cur_sidebar.close()
-    sidebar_is_open = false
-  else
-    local widgets = require("dap.ui.widgets")
-    cur_sidebar = widgets.sidebar(widgets.scopes)
-    cur_sidebar.open()
-    sidebar_is_open = true
-  end
+	if sidebar_is_open then
+		cur_sidebar.close()
+		sidebar_is_open = false
+	else
+		local widgets = require("dap.ui.widgets")
+		cur_sidebar = widgets.sidebar(widgets.scopes)
+		cur_sidebar.open()
+		sidebar_is_open = true
+	end
 end
 m("n", "<leader>ds", toggle_dap_sidebar, { desc = "Toggle the dap sidebar" })
 local repl_is_open = false
 local repl
 local toggle_dap_repl = function()
-  if repl_is_open then
-    repl.close()
-    repl_is_open = false
-  else
-    repl = require("dap.repl")
-    repl.open()
-    repl_is_open = true
-  end
+	if repl_is_open then
+		repl.close()
+		repl_is_open = false
+	else
+		repl = require("dap.repl")
+		repl.open()
+		repl_is_open = true
+	end
 end
 m("n", "<leader>dr", toggle_dap_repl, { desc = "Toggle the dap repl" })
 m("n", "<f5>", ":DapContinue<cr>", { desc = "Continue the dap debugger" })
