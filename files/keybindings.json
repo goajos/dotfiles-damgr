@@ -4,12 +4,12 @@
   {
     "key": "tab",
     "command": "workbench.action.nextEditor",
-    "when": "!terminalFocus && vim.active && vim.mode != 'Insert'",
+    "when": "!inQuickOpen && !suggestWidgetVisible && !terminalFocus && vim.active && vim.mode != 'Insert'",
   },
   {
     "key": "shift+tab",
     "command": "workbench.action.previousEditor",
-    "when": "!terminalFocus && vim.active && vim.mode != 'Insert'"
+    "when": "!inQuickOpen && !suggestWidgetVisible && !terminalFocus && vim.active && vim.mode != 'Insert'"
   },
   // ctrl+k will focus the buffers when in the panel
   {
@@ -44,17 +44,17 @@
     "command": "workbench.action.focusRightGroup",
     "when": "editorFocus && vim.active && vim.mode != 'Insert'"
   },
-  // escape closes the terminal when focusing it
+  // escape closes the terminal when focusing it (not while debugging)
   {
     "key": "escape",
     "command": "workbench.action.closePanel",
-    "when": "terminalFocus"
+    "when": "!inDebugMode && terminalFocus"
   },
   // escape will close the panel with buffer focus and not in insert mode
   {
     "key": "escape",
     "command": "workbench.action.closePanel",
-    "when": "(activePanel == terminal || activePanel == workbench.panel.repl || activePanel == workbench.panel.output) && vim.active && vim.mode != 'Insert'"
+    "when": "!inDebugMode && (activePanel == terminal || activePanel == workbench.panel.repl || activePanel == workbench.panel.output) && vim.active && vim.mode != 'Insert'"
   },
   // escape will close the sidebar with buffer focus and not in insert mode
   {
@@ -105,16 +105,28 @@
     "key": "ctrl+x ctrl+o",
     "command": "editor.action.triggerSuggest && vim.active && vim.mode == 'Insert'",
   },
-  // ctrl+n will select the next option in popupmenus
+  // ctrl+n will select the next option in the quick open menu
   {
     "key": "ctrl+n",
     "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
   },
-  // ctrl+p will select the previous option in popupmenus
+  // ctrl+p will select the previous option in the quick open menu
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
+  },
+  // ctrl+n will select the next option in the suggestion widget
+  {
+    "key": "ctrl+n",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible"
+  },
+  // ctrl+p will select the previous option in the suggestion widget
+  {
+    "key": "ctrl+p",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible"
   },
 ]
