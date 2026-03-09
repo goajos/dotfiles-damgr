@@ -1,8 +1,0 @@
-module {
-  misc {
-    packages {
-      bitwarden
-      firefox
-    }
-  }
-}

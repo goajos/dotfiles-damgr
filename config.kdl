@@ -1,4 +1,0 @@
-config {
-  aur_helper paru
-  active_host arch
-}

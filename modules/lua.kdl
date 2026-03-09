@@ -1,8 +1,0 @@
-module {
-  lua {
-    packages {
-      lua-language-server
-      stylua
-    }
-  }
-}
