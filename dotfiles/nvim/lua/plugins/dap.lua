@@ -27,22 +27,16 @@ d.configurations.c = {
 	},
 }
 
--- TODO: python dap is not setup properly
-d.adapters.python = {
-	type = "executable",
-	command = function()
-		local cwd = vim.fn.getcwd()
-		if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-			return cwd .. "/.venv/bin/python"
-		else
-			return "/usr/bin/python"
-		end
-	end,
-	args = { "-m", "debugpy.adapter" },
-	options = {
-		source_filetype = "pyhon",
-	},
-}
+d.adapters.python = function(callback)
+	local cwd = vim.fn.getcwd()
+	local cmd = vim.fn.executable(cwd .. "/.venv/bin/python") == 1 and cwd .. "/.venv/bin/python" or "/usr/bin/python"
+	callback({
+		type = "executable",
+		command = cmd,
+		args = { "-m", "debugpy.adapter" },
+		options = { source_filetype = "python" },
+	})
+end
 d.configurations.python = {
 	{
 		name = "launch",
@@ -51,11 +45,8 @@ d.configurations.python = {
 		program = "${file}",
 		pythonPath = function()
 			local cwd = vim.fn.getcwd()
-			if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-				return cwd .. "/.venv/bin/python"
-			else
-				return "/usr/bin/python"
-			end
+			return vim.fn.executable(cwd .. "/.venv/bin/python") == 1 and cwd .. "/.venv/bin/python"
+				or "/usr/bin/python"
 		end,
 	},
 }
